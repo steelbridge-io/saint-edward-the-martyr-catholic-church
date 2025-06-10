@@ -93,25 +93,40 @@ function custom_load_page_template($template)
                         <?php endif; ?>
                      </header>
 
-
                      <div class="container-fluid">
                          <div class="row">
-                             <div class="col-md-7">
-                                <?php the_content(); ?>
+                          <?php
+                          // Get sidebar content first
+                          $card_title = get_post_meta(get_the_ID(), '_bible_study_card_title', true);
+                          $card_text = get_post_meta(get_the_ID(), '_bible_study_card_text', true);
+
+                          // Check if we have any meaningful content
+                          $has_title = !empty(trim($card_title));
+                          $has_text = !empty(trim(strip_tags($card_text)));
+                          $has_sidebar_content = $has_title || $has_text;
+                          ?>
+
+                             <div class="<?php echo $has_sidebar_content ? 'col-md-7' : 'col-md-12'; ?>">
+                              <?php the_content(); ?>
                              </div>
-                             <div id="card-bible-sidebar" class="col-md-5">
-                                 <div class="card">
-                                     <div class="card-body">
-                                         <h4 class="card-title"><?php echo esc_html(get_post_meta(get_the_ID(), '_bible_study_card_title', true)); ?>
-                                         </h4>
-                                         <div class="card-text"> <?php
-	                                         $card_content = get_post_meta(get_the_ID(), '_bible_study_card_text', true);
-	                                         echo do_shortcode(wp_kses_post($card_content));
-	                                         ?>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
+
+                          <?php if ($has_sidebar_content) : ?>
+                              <div id="card-bible-sidebar" class="col-md-5">
+                                  <div class="card">
+                                      <div class="card-body">
+                                       <?php if ($has_title) : ?>
+                                           <h4 class="card-title"><?php echo esc_html($card_title); ?></h4>
+                                       <?php endif; ?>
+
+                                       <?php if ($has_text) : ?>
+                                           <div class="card-text">
+                                            <?php echo do_shortcode(wp_kses_post($card_text)); ?>
+                                           </div>
+                                       <?php endif; ?>
+                                      </div>
+                                  </div>
+                              </div>
+                          <?php endif; ?>
                          </div>
                      </div>
                  </article>
