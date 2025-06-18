@@ -1,0 +1,78 @@
+/* Custom Login Page Styling */
+body.login {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: url('../images/login-background.webp');
+}
+
+#login {
+    padding: 5% 0 0;
+}
+
+.login form {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    padding: 26px 24px 34px !important;
+    box-shadow: none !important;
+    border-radius: 0px;
+    border: none !important;
+}
+
+/* Hide WordPress logo */
+.login h1 a {
+    display: none !important;
+}
+
+/* Make login button stand out */
+.wp-core-ui .button-primary {
+    background: #ff6900; !important;
+    border-color: #ff6900; !important;
+    box-shadow: 0 1px 0 #ff6900; !important;
+    text-shadow: 0 -1px 1px #ff6900, 1px 0 1px #ff6900, 0 1px 1px #ff6900, -1px 0 1px #ff6900 !important;
+}
+
+.wp-login-lost-password {
+    color: #ffffff !important;
+}
+
+#backtoblog a {
+    color: #ffffff !important;
+}
+
+#login {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    padding: 0.5em !important;
+    position: absolute;
+    top: 19% !important;
+    right: 10% !important;
+}
+
+#loginform .submit #wp-submit {
+    background: #ff6900 !important;
+}
+
+.login .message, .login .notice, .login .success {
+    border-left: 4px solid #ff6900 !important;
+}
+
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=checkbox]:focus {
+    border-color: #ff6900;
+    box-shadow: 0 0 0 1px #ff6900;
+    outline: 2px solid transparent;
+}
+
+.dashicons.dashicons-visibility,
+.dashicons.dashicons-hidden {
+    border-color: #ff6900;
+    color: #ff6900;
+}
+
+.login .button.wp-hide-pw:focus {
+    background: 0 0;
+    border-color: #ff6900;
+    box-shadow: 0 0 0 1px #ff6900;;
+    outline: 2px solid transparent;
+}

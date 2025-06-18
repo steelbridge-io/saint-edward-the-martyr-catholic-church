@@ -18,6 +18,31 @@ require_once plugin_dir_path(__FILE__) . 'inc/meta-field.php';
 define('CHURCH_PLUGIN_PATH', plugin_dir_path(__FILE__));
 define('CHURCH_TEMPLATES_PATH', CHURCH_PLUGIN_PATH . 'templates/');
 
+
+// Include login customization functionality
+require_once plugin_dir_path(__FILE__) . 'inc/login-customization.php';
+
+// Create directories for assets if they don't exist
+function church_create_asset_directories() {
+ // Create CSS directory if it doesn't exist
+ $css_dir = CHURCH_PLUGIN_PATH . 'css/';
+ if (!is_dir($css_dir)) {
+  mkdir($css_dir, 0755, true);
+ }
+
+ // Create images directory if it doesn't exist
+ $images_dir = CHURCH_PLUGIN_PATH . 'images/';
+ if (!is_dir($images_dir)) {
+  mkdir($images_dir, 0755, true);
+ }
+}
+
+// Run this at plugin load time
+church_create_asset_directories();
+
+// Register activation hook too for first install
+register_activation_hook(__FILE__, 'church_create_asset_directories');
+
 /**
  * Add custom page template to the templates dropdown for pages
  */
