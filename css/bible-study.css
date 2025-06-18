@@ -1,7 +1,5 @@
-@media screen and (min-width: 48em) {
-    .wrap {
-        max-width: 1300px !important;
-    }
+p a {
+    color: #ff6900;
 }
 
 #card-bible-sidebar {
@@ -18,6 +16,12 @@
     }
     .card {
         border-radius: 0;
+    }
+}
+
+@media screen and (min-width: 48em) {
+    .wrap {
+        max-width: 1300px !important;
     }
 }
 
